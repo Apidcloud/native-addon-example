@@ -1,6 +1,8 @@
 'use strict'
 
-const addon = require('./build/Release/addon.node')
+const addon = require('bindings')('addon.node')
+
+console.log(`native addon hello: ${addon.Hello()}`)
 
 console.log(`native addon whoami: ${addon.WhoAmI()}`)
 

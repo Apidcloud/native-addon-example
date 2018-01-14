@@ -3,6 +3,11 @@
 const int maxValue = 10;
 int numberOfCalls = 0;
 
+NAN_METHOD(Hello) {
+  auto message = Nan::New<v8::String>("Hello World!").ToLocalChecked();
+  info.GetReturnValue().Set(message);
+}
+
 NAN_METHOD(WhoAmI) {
   auto message = Nan::New<v8::String>("I'm a Node Hero!").ToLocalChecked();
   info.GetReturnValue().Set(message);
@@ -29,6 +34,7 @@ NAN_METHOD(Increment) {
 }
 
 NAN_MODULE_INIT(Initialize) {
+  NAN_EXPORT(target, Hello);
   NAN_EXPORT(target, WhoAmI);
   NAN_EXPORT(target, Increment);
 }
